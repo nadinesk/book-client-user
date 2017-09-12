@@ -9,6 +9,8 @@ import About from './components/About'
 import { ConnectedBooksInput } from './components/AddBook'
 import { ConnectedFindBooks } from './components/AddGBooks'
 import { ConnectedBooks } from './components/Books'
+import { ConnectedSignup } from './components/Signup'
+import { ConnectedLogin } from './components/Login'
 
 import {Navbar, Nav, NavItem, Navs} from 'react-bootstrap'
 
@@ -18,6 +20,8 @@ import Home from './components/Home'
 
 export default (
      <Route path="/" component={ WrapperApp }>        
+            <Route path="/signup" component={ConnectedSignup} />
+            <Route path="/login" component={ConnectedLogin} />
             <Route path="/books" component={ConnectedBooks} />
             <Route path="/books/new" component={ConnectedBooksInput} />
             <Route path="/books/search"  component={ConnectedFindBooks} />            

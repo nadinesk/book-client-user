@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
+import { bindActionCreators } from 'redux'
 import { login } from '../actions/authActions.js'
-import UserForm from '../components/Forms/user'
+import UserForm from './Forms/user'
+import * as actions from '../actions/bookActions.js'
 
 
 class Login extends Component {
@@ -30,4 +31,11 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { login })(Login)
+function mapDispatchToProps(dispatch){
+  
+  return {actions: bindActionCreators(actions, dispatch)}
+}
+
+export const ConnectedLogin = connect(mapStateToProps, mapDispatchToProps)(Login)
+// export default connect(mapStateToProps, { login })(Login)
+
