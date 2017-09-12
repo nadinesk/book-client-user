@@ -1,0 +1,19 @@
+/*.first_col {
+	background-color: blue; 
+}
+.first_col1 {
+	background-color: grey; 
+}
+
+.first_col2 {
+	background-color: yellow; 
+}*/
+.book-link {
+	cursor: default;
+
+}
+
+.book-link:hover {
+	color: blue;
+	
+}
