@@ -10,10 +10,25 @@ import { Router, browserHistory } from 'react-router'
 import Routes from './Routes.js'
 import { Link } from 'react-router'
 
-
+type Props = {
+  isAuthenticated: boolean,
+  logout: () => void,
+  authenticate: () => void,
+  authFailure: () => void
+}
 
 export class App extends Component {
   
+ props: Props
+  componentDidMount() {
+    const token = localStorage.getItem('token')
+    if (token) {
+      this.props.authenticate(token)
+    } else {
+      // Ping the API server in case it hasn't been used in 30 minutes and Heroku put it to sleep
+      fetch('http://locahost:3200/api/v1')
+    }
+  }
  render() {
     return (
       <div>      
@@ -29,7 +44,10 @@ export class App extends Component {
 
 function mapStateToProps(state) {
   console.log('app  map state to props')
-  return {books: state.books}
+  return {books: state.books, 
+          isAuthenticated: state.auth.isAuthenticated,
+          currentUser: state.auth.currentUser
+  }
 }
 
 function mapDispatchToProps(dispatch) {

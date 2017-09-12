@@ -22,7 +22,7 @@ export function fetchBooks() {
 
   return function(dispatch){    
     //dispatch({type: 'FETCH_BOOKS'})
-    return fetch('https://dry-peak-34989.herokuapp.com/api/v1/books')
+    return fetch('http://localhost:3200/api/v1/books')
       .then(console.log(response => response.json()))
       .then(res =>  res.json())
       .then(booksData => {
@@ -40,7 +40,7 @@ export function addBook(book) {
   console.log('addbook')
   return function(dispatch) {    
     dispatch({type: 'POST_BOOK'})
-    return fetch('https://dry-peak-34989.herokuapp.com/api/v1/books', {
+    return fetch('http://localhost:3200/api/v1/books', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
