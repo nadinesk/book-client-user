@@ -47,6 +47,7 @@ export const signup = (user, router) => {
 }
 
 export const login = (user, router) => {
+  debugger
   return dispatch => {
     dispatch(authRequest());
     return ApiServices.post(`/auth`, user)

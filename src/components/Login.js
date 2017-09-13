@@ -36,6 +36,6 @@ function mapDispatchToProps(dispatch){
   return {actions: bindActionCreators(actions, dispatch)}
 }
 
-export const ConnectedLogin = connect(mapStateToProps, mapDispatchToProps)(Login)
+export const ConnectedLogin = connect(mapStateToProps, { login })(Login)
 // export default connect(mapStateToProps, { login })(Login)
 

@@ -9,6 +9,8 @@ import * as actions from './actions/bookActions.js'
 import { Router, browserHistory } from 'react-router'
 import Routes from './Routes.js'
 import { Link } from 'react-router'
+import { authenticate, authFailure } from './actions/authActions'
+import { logout } from './actions/authActions'
 
 type Props = {
   isAuthenticated: boolean,
@@ -20,15 +22,18 @@ type Props = {
 export class App extends Component {
   
  props: Props
-  componentDidMount() {
+  
+   componentDidMount() {
     const token = localStorage.getItem('token')
     if (token) {
       this.props.authenticate(token)
     } else {
       // Ping the API server in case it hasn't been used in 30 minutes and Heroku put it to sleep
-      fetch('http://locahost:3200/api/v1')
+      fetch('http://localhost:3200/api/v1')
     }
   }
+
+
  render() {
     return (
       <div>      
@@ -50,7 +55,12 @@ function mapStateToProps(state) {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {actions: bindActionCreators(actions, dispatch)}
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    logout,
+    authenticate,
+    authFailure
+  }, dispatch)
 }
+
 export const WrapperApp = connect(mapStateToProps, mapDispatchToProps)(App)

@@ -17,6 +17,8 @@ export default class FindBook extends Component {
         }
     }
 
+    
+
 
 
     handleInputChange(event) {
@@ -31,7 +33,10 @@ export default class FindBook extends Component {
     }
 
     handleOnSubmit(event){
+      
       event.preventDefault()            
+      
+      
       let book = Object.assign({}, this.state)
       debugger
       this.props.actions.findBook(book.gtitle)
@@ -73,7 +78,8 @@ function mapDispatchToProps(dispatch){
 }
 
 function mapStateToProps(state){
-  return { booksFound: state.booksFound}
+  return { booksFound: state.booksFound
+            }
 }
 
 export const ConnectedFindBooks = connect(mapStateToProps, mapDispatchToProps)(FindBook)
