@@ -48,7 +48,7 @@ export class App extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log('app  map state to props')
+  console.log('sac', state.auth.currentUser)
   return {books: state.books, 
           isAuthenticated: state.auth.isAuthenticated,
           currentUser: state.auth.currentUser

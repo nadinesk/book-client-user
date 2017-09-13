@@ -15,6 +15,7 @@ import {Navbar, Nav, NavItem, Navs} from 'react-bootstrap'
 import store from './store'
 
 
+
 // const store = createStore(
 //   rootReducer,
 //   compose(
@@ -24,8 +25,11 @@ import store from './store'
 // )
 
 ReactDOM.render(
+
+	
   
   <Provider store={store}>       
+
     	<Router history={browserHistory} routes={Routes} />    		    
   </Provider>,
 

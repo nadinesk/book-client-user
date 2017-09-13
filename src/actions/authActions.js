@@ -1,5 +1,6 @@
 import { reset, SubmissionError } from 'redux-form';
 import ApiServices from './ApiServices.js'
+import { browserHistory } from 'react-router';
 
 // Actions
 
@@ -47,7 +48,7 @@ export const signup = (user, router) => {
 }
 
 export const login = (user, router) => {
-  debugger
+  
   return dispatch => {
     dispatch(authRequest());
     return ApiServices.post(`/auth`, user)
@@ -56,7 +57,7 @@ export const login = (user, router) => {
         localStorage.setItem('token', token);
         dispatch(authSuccess(user, token))
         dispatch(reset('login'));
-        router.history.replace('/dashboard');
+           browserHistory.push('/books')     
       })
       .catch((errors) => {
         console.log(errors)

@@ -16,8 +16,9 @@ export default class BooksList extends Component {
         }
     }
 
-    componentDidMount() {
-    	this.setCurrentBook()
+    componentDidMount() {    	
+        
+        this.setCurrentBook()
     }	
 
 	setCurrentBook() {
@@ -40,6 +41,7 @@ export default class BooksList extends Component {
         	<p key={book.id} className="book-link" onClick={() => this.setBook(book.id)}>
             	{book.title}     
 			</p>
+
         ))    
   
   	return (

@@ -21,10 +21,16 @@ export default class Books extends Component {
     }
 
     componentDidMount() {      
-       this.props.actions.fetchBooks()
+       
+       const currentUserId = this.props.currentUser.id
+       this.props.actions.fetchBooks(currentUserId)
+       debugger
+
     }
 
     render() {
+debugger
+      console.log('this.props.books', this.props.books)
       return (
         <Grid>
           <Row className="show-grid">
@@ -33,8 +39,8 @@ export default class Books extends Component {
           <Row className="show-grid">
             <Col className="first_col1" md={6} >                               
               <Link to="/books/new">Add A Book  </Link>                    
-            
-              {this.props.books.length > 0 ? <BooksList books={this.props.books}/> : <h4>...loading</h4>}                    
+               
+              {this.props.books ? <BooksList books={this.props.books}/> : <h4>...loading</h4>}                    
             </Col>                                           
           </Row>
         </Grid>
@@ -47,8 +53,10 @@ function mapDispatchToProps(dispatch){
 }
 
 function mapStateToProps(state){
-
-  return { books: state.books}
+  debugger
+  return { books: state.books.books, 
+   currentUser: state.auth.currentUser,
+    token: state.auth.token}
 }
 
 export const ConnectedBooks = connect(mapStateToProps, mapDispatchToProps)(Books)

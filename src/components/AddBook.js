@@ -19,15 +19,6 @@ export default class AddBook extends Component {
         }
     }
 
-     componentDidMount() {
-      debugger
-      const user_id = this.props.currentUser.id
-
-  
-    }
-
-
-
     handleInputChange(event) {
 
         const { value, name } = event.target
@@ -38,13 +29,11 @@ export default class AddBook extends Component {
     }
 
     handleOnSubmit(event){
-      event.preventDefault()    
-      
-       const user_id = this.props.currentUser.id        
-
-      let book = Object.assign({}, this.state)
+      event.preventDefault()         
+      const currentUser = this.props.currentUser
       debugger
-      this.props.actions.addBook(book)
+      let book = Object.assign({}, this.state)
+      this.props.actions.addBook(currentUser, book)
    }
 
 
@@ -125,9 +114,10 @@ function mapDispatchToProps(dispatch){
 }
 
 function mapStateToProps(state){
+  
   return { books: state.books, 
-  currentUser: state.auth.currentUser, 
-            token: state.auth.token}
+   currentUser: state.auth.currentUser,
+    token: state.auth.token}
 }
 
 export const ConnectedBooksInput = connect(mapStateToProps, mapDispatchToProps)(AddBook)

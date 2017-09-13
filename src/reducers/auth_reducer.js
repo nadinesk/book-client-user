@@ -16,6 +16,7 @@ export default (state = initialState, action) => {
       }
 
     case 'AUTHENTICATION_SUCCESS':
+      
       return {
         ...state,
         isAuthenticated: true,

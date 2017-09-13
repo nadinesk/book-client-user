@@ -18,11 +18,11 @@ const receivedGBooksInfo = booksFound => {
   }
 }
 
-export function fetchBooks() {
+export function fetchBooks(currentUser) {
 
   return function(dispatch){    
     //dispatch({type: 'FETCH_BOOKS'})
-    return fetch('http://localhost:3200/api/v1/books')
+    return fetch(`http://localhost:3200/api/v1/users/${currentUser}/books`)
       .then(console.log(response => response.json()))
       .then(res =>  res.json())
       .then(booksData => {
@@ -36,11 +36,11 @@ export function fetchBooks() {
 
 
 
-export function addBook(book) {    
+export function addBook(currentUser, book) {    
   console.log('addbook')
   return function(dispatch) {    
     dispatch({type: 'POST_BOOK'})
-    return fetch('http://localhost:3200/api/v1/books', {
+    return fetch(`http://localhost:3200/api/v1/users/${currentUser.id}/books`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',

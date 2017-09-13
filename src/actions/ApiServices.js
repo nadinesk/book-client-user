@@ -28,7 +28,6 @@ export default {
   },
 
   post(url, data ={}, token) {
-    debugger
     const body = JSON.stringify(data)
 
     const headers =  {
